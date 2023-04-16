@@ -1,7 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 function Landing() {
+
+  const navigation = useNavigation()
+
   return (
     <View style={styles.landingSection}>
       <Image style={styles.blobFirst} source={require('../../assets/quiz-5.png')} />
@@ -20,9 +24,9 @@ function Landing() {
         uizPlosion
       </Text>
       <Text style={styles.appDesc}>
-        Biliyinə güvənirsən? O zaman Quizplosion ilə özünü test et!
+        Elə bilirsən ağıllısan? Elə indi Quizplosion ilə özünü test et!
       </Text>
-      <TouchableOpacity activeOpacity={0.7} style={styles.startBtn}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Quiz')}} activeOpacity={0.7} style={styles.startBtn}>
         <Text style={{ fontSize: 24, fontWeight: "500" }}> Başla</Text>
       </TouchableOpacity>
     </View>
