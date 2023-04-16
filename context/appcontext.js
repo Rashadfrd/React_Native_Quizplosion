@@ -9,6 +9,7 @@ export const Provider = ({children}) => {
     const [loading, setLoading] = useState(false)
     const [index, setIndex] = useState(0)
     const [correct, setCorrect] = useState(0)
+    const [msg, setMsg] = useState(null)
 
     useEffect(()=>{
         let tempArr = []
@@ -44,6 +45,7 @@ export const Provider = ({children}) => {
                 return index
             }
         })
+        setMsg(null)
     }
 
     const checkAnswer = (check) => {
@@ -52,8 +54,11 @@ export const Provider = ({children}) => {
                 const state = prevState + 1
                 return state
             })
+            setMsg(true)
         }
-        nextQuestion()
+        else{
+            setMsg(false)
+        }
     }
 
 
@@ -63,7 +68,8 @@ export const Provider = ({children}) => {
         index,
         correct,
         nextQuestion,
-        checkAnswer
+        checkAnswer,
+        msg
     }
     return(
         <AppContext.Provider value={data}>

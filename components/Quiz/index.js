@@ -3,9 +3,9 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useAppContext } from "../../context/appcontext";
 
 function Quiz() {
-  const { questions, loading, index, nextQuestion, checkAnswer, correct } = useAppContext();
+  const { questions, loading, index, nextQuestion, checkAnswer, correct, msg } = useAppContext();
 
-  const {correctAnswer, wrongAnswers} = questions[index]
+  const {correctAnswer, wrongAnswers, correctMsg, wrongMsg} = questions[index]
   
   const answers = [...wrongAnswers, correctAnswer]
 
@@ -18,20 +18,25 @@ function Quiz() {
     <View style={styles.quizSection}>
         <Image style={styles.blobFirst} source={require('../../assets/quiz-5.png')} />
         <Image style={styles.blobSecond} source={require('../../assets/quiz-6.png')} />
-        <Text style={styles.questionAmount}>Correct answers: {correct} / {index}</Text>
+        <Text style={styles.questionAmount}>Correct answers: {correct} / {index + 1}</Text>
         <Text style={styles.question}>{questions[index].question}</Text>
+        {
+            msg === null
+            ? null
+            : msg ? <Text style={styles.correctMsg}>{correctMsg}</Text> : <Text style={styles.wrongMsg}>{wrongMsg}</Text>
+        }
         <View style={styles.answers}>
             {
                 questions && answers.map((answer, index) => {
                     return(
-                        <TouchableOpacity onPress={() => {checkAnswer(correctAnswer === answer)}} activeOpacity={.7} style={styles.answer} key={index}>
+                        <TouchableOpacity disabled={msg || msg === false} onPress={() => {checkAnswer(correctAnswer === answer)}} activeOpacity={.7} style={styles.answer} key={index}>
                             <Text style={styles.answerItem}>{answer}</Text>
                         </TouchableOpacity>
                     )
                 })
             }
         </View>
-        <TouchableOpacity onPress={nextQuestion} style={{width:'100%'}} activeOpacity={.7}><Text style={styles.skipQuestion}>Skip</Text></TouchableOpacity>
+        <TouchableOpacity onPress={nextQuestion} style={{width:'100%'}} activeOpacity={.7}><Text style={styles.skipQuestion}>Növbəti</Text></TouchableOpacity>
     </View>
   );
 }
@@ -66,7 +71,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         paddingVertical:15,
-        borderRadius:15
+        borderRadius:15,
     },
     answerItem:{
         fontSize:19,
@@ -88,6 +93,26 @@ const styles = StyleSheet.create({
         alignItems:'flex-end',
         fontSize:17,
         textAlign:'right'
+    },
+    wrongMsg:{
+        width:'92%',
+        marginTop:15,
+        backgroundColor:'rgba(255, 0, 0, 0.4)',
+        color:'#fff',
+        padding:12,
+        textAlign:'center',
+        borderRadius:10,
+        fontSize:16
+    },
+    correctMsg:{
+        width:'92%',
+        marginTop:15,
+        backgroundColor:'rgba(0, 255, 0, 0.4)',
+        color:'#fff',
+        padding:12,
+        textAlign:'center',
+        borderRadius:10,
+        fontSize:16
     }
 })
 
