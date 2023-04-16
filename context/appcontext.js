@@ -46,13 +46,24 @@ export const Provider = ({children}) => {
         })
     }
 
+    const checkAnswer = (check) => {
+        if(check){
+            setCorrect((prevState)=>{
+                const state = prevState + 1
+                return state
+            })
+        }
+        nextQuestion()
+    }
+
 
     const data = {
         questions,
         loading,
         index,
         correct,
-        nextQuestion
+        nextQuestion,
+        checkAnswer
     }
     return(
         <AppContext.Provider value={data}>

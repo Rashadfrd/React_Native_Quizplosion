@@ -3,9 +3,11 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useAppContext } from "../../context/appcontext";
 
 function Quiz() {
-  const { questions, loading, index, nextQuestion, correct } = useAppContext();
+  const { questions, loading, index, nextQuestion, checkAnswer, correct } = useAppContext();
 
-  const answers = [...questions[index].wrongAnswers, questions[index].correctAnswer]
+  const {correctAnswer, wrongAnswers} = questions[index]
+  
+  const answers = [...wrongAnswers, correctAnswer]
 
   if (loading) {
     return <Text> loading.....</Text>;
@@ -22,7 +24,7 @@ function Quiz() {
             {
                 questions && answers.map((answer, index) => {
                     return(
-                        <TouchableOpacity activeOpacity={.7} style={styles.answer} key={index}>
+                        <TouchableOpacity onPress={() => {checkAnswer(correctAnswer === answer)}} activeOpacity={.7} style={styles.answer} key={index}>
                             <Text style={styles.answerItem}>{answer}</Text>
                         </TouchableOpacity>
                     )
