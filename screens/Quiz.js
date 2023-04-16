@@ -1,13 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
+import Quiz from "../components/Quiz";
 
 
 
 function QuizScreen() {
   return (
-    <Text>
-      Quiz
-    </Text>
+    <Quiz />
   );
 }
 

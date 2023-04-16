@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Provider } from './context/appcontext';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,9 +11,10 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   return (
-      <Provider>
+    <Provider>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
+        <StatusBar style='light' />
+          <Stack.Navigator screenOptions={{headerShown:false}}>
             <Stack.Screen name="Landing" component={LandingScreen} />
             <Stack.Screen name="Quiz" component={QuizScreen} />
           </Stack.Navigator>
