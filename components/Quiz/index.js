@@ -8,7 +8,17 @@ function Quiz() {
 
   const {correctAnswer, wrongAnswers, correctMsg, wrongMsg} = questions[index]
   
-  const answers = [...wrongAnswers, correctAnswer]
+  let answers = [...wrongAnswers]
+  let tempIndex = Math.floor(Math.random() * 4)
+
+  if (tempIndex === 3) {
+    answers.push(correctAnswer)
+  } else {
+    answers.push(answers[tempIndex])
+    answers[tempIndex] = correctAnswer
+  }
+
+
 
   if (loading) {
     return <Text> loading.....</Text>;
