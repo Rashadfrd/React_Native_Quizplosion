@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useAppContext } from "../../context/appcontext";
+import Quizmodal from "../Modal";
 
 function Quiz() {
   const { questions, loading, index, nextQuestion, checkAnswer, correct, msg } = useAppContext();
@@ -16,6 +17,7 @@ function Quiz() {
 
   return (
     <View style={styles.quizSection}>
+        <Quizmodal />
         <Image style={styles.blobFirst} source={require('../../assets/quiz-5.png')} />
         <Image style={styles.blobSecond} source={require('../../assets/quiz-6.png')} />
         <Text style={styles.questionAmount}>Correct answers: {correct} / {index + 1}</Text>
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     correctMsg:{
         width:'92%',
         marginTop:15,
-        backgroundColor:'rgba(0, 255, 0, 0.4)',
+        backgroundColor:'rgba(0, 255, 0, 0.3)',
         color:'#fff',
         padding:12,
         textAlign:'center',

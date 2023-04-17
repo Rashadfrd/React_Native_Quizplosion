@@ -7,6 +7,7 @@ export const Provider = ({children}) => {
 
     const [questions, setQuestions] = useState([])
     const [loading, setLoading] = useState(false)
+    const [modal, setModal] = useState(false)
     const [index, setIndex] = useState(0)
     const [correct, setCorrect] = useState(0)
     const [msg, setMsg] = useState(null)
@@ -37,15 +38,16 @@ export const Provider = ({children}) => {
 
 
     const nextQuestion = () => {
+        setMsg(null)
         setIndex((prevState)=>{
             const index = prevState + 1
             if (index > questions.length - 1) {
-                return 0
+                setModal(true)
+                return questions.length - 1
             } else {
                 return index
             }
         })
-        setMsg(null)
     }
 
     const checkAnswer = (check) => {
@@ -66,10 +68,14 @@ export const Provider = ({children}) => {
         questions,
         loading,
         index,
+        setIndex,
         correct,
+        setCorrect,
         nextQuestion,
         checkAnswer,
-        msg
+        msg,
+        modal,
+        setModal
     }
     return(
         <AppContext.Provider value={data}>
