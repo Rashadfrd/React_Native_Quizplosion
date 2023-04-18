@@ -1,23 +1,22 @@
 import React from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useLayoutEffect } from "react";
+import { AntDesign } from '@expo/vector-icons';
 import { tools } from "../../utils/constants";
 
 function AppInfo() {
 
   const navigation = useNavigation()
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      title:'QuizPlosion-a xoş gəldin!'
-    });
-  }, [navigation]);
-
   
   return (
     <View style={styles.appInfo}>
+      <View style={styles.nav}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Landing')}} activeOpacity={.4}>
+          <AntDesign name="back" size={34} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.navItem}>Quizplosiona xoş gəldin !</Text>
+      </View>
       <View style={styles.hero}>
         <Image style={{width:170, height:170}} source={require('../../assets/quiz-3.png')}/>
       </View>
@@ -30,8 +29,7 @@ function AppInfo() {
                         <View key={tool.id} style={styles.tool}>
                             {tool.icon}
                             <View style={{alignItems:'center', justifyContent:'center'}}>
-                                <Text>{tool.text.substring(0, tool.text.indexOf(' '))}</Text>
-                                <Text>{tool.text.substring(tool.text.indexOf(' '))}</Text>
+                                <Text>{tool.text}</Text>
                             </View>
                         </View>
                     )
@@ -60,13 +58,22 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#fff',
         paddingVertical: 35,
+        paddingTop:20,
         paddingHorizontal: 15,
         gap:20
+    },
+    nav:{
+      flexDirection:'row',
+       alignItems:'center',
+       gap:30,
+    },
+    navItem:{
+      fontSize:20
     },
     hero:{
         backgroundColor: "#1c1a5e",
         width:'100%',
-        height:190,
+        height:210,
         borderRadius:20,
         justifyContent:'center',
         alignItems:'center',
@@ -88,11 +95,10 @@ const styles = StyleSheet.create({
         borderRadius:10,
         justifyContent:'center',
         alignItems:'center',
-        height:95,
-        width:124
     },
     button:{
         width:'100%',
+        backgroundColor:'#1c1a5e',
         justifyContent:'center',
         alignItems:'center',
         borderWidth:1,
@@ -101,7 +107,8 @@ const styles = StyleSheet.create({
         padding:5
     },
     buttonText:{
-        fontSize: 23
+        fontSize: 23,
+        color:'#fff'
     },
     infoText:{
         color:'#1c1a5e',

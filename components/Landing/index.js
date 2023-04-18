@@ -14,20 +14,22 @@ function Landing() {
       <Image style={styles.blobSecond} source={require('../../assets/quiz-6.png')} />
       <View style={styles.appImageContainer}>
         <Image
-          source={require("../../assets/quiz-2.webp")}
-          style={{ width: 370, height: 300, marginRight: 10 }}
+          source={require("../../assets/quiz-10.png")}
+          style={{ width: 270, height: 300, marginRight: 10 }}
         />
       </View>
-      <Text style={styles.appTitle}>
-        <Image 
-          source={require("../../assets/quiz-4.png")}
-          style={{width:50,height:50}}  
-        />
-        uizPlosion
-      </Text>
-      <Text style={styles.appDesc}>
-        Elə bilirsən ağıllısan? Elə indi Quizplosion ilə özünü test et!
-      </Text>
+      <View style={{width:'100%'}}>
+        <Text style={styles.appTitle}>
+          <Image 
+            source={require("../../assets/quiz-3.png")}
+            style={{width:45,height:55}}  
+          />
+          uizPlosion
+        </Text>
+        <Text style={styles.appDesc}>
+          Elə bilirsən ağıllısan? Elə indi Quizplosion ilə özünü test et!
+        </Text>
+      </View>
       <TouchableOpacity onPress={()=>{navigation.navigate('AppInfo')}} activeOpacity={0.7} style={styles.startBtn}>
         <Text style={{ fontSize: 24, fontWeight: "500" }}> Başla</Text>
       </TouchableOpacity>
@@ -47,10 +49,11 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   appTitle: {
-    fontSize: 45,
+    fontSize: 55,
     fontWeight: "500",
     textAlign: "center",
     color: "#fff",
+    marginTop:40
   },
   appDesc: {
     textAlign: "center",
