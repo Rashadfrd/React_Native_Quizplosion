@@ -2,6 +2,8 @@ import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+
+
 function Landing() {
 
   const navigation = useNavigation()
@@ -26,7 +28,7 @@ function Landing() {
       <Text style={styles.appDesc}>
         Elə bilirsən ağıllısan? Elə indi Quizplosion ilə özünü test et!
       </Text>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Quiz')}} activeOpacity={0.7} style={styles.startBtn}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('AppInfo')}} activeOpacity={0.7} style={styles.startBtn}>
         <Text style={{ fontSize: 24, fontWeight: "500" }}> Başla</Text>
       </TouchableOpacity>
     </View>
