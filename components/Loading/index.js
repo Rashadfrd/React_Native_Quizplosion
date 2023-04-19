@@ -5,12 +5,21 @@ import { Text, View, StyleSheet,Image } from "react-native";
 function Loading() {
   const navigation = useNavigation();
 
-  useEffect(()=>{
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // delay navigation reset for 2 seconds
       setTimeout(() => {
-          navigation.navigate('Landing')
-      }, 1000);
-  },[])
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Landing' }],
+        });
+      }, 1500);
+    });
+    // clean up
+    return unsubscribe;
+  }, [navigation]);
 
+  
   return (
     <View style={styles.loading}>
       <Text style={styles.appTitle}>
