@@ -2,21 +2,23 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useAppContext } from "../../context/appcontext";
 import Quizmodal from "../Modal";
+import Answers from "../Answers";
 
 function Quiz() {
   const { questions, loading, index, nextQuestion, checkAnswer, correct, msg } = useAppContext();
 
-  const {correctAnswer, wrongAnswers, correctMsg, wrongMsg} = questions[index]
+  const {correctAnswer, wrongAnswers, correctMsg, wrongMsg,} = questions[index]
   
-  let answers = [...wrongAnswers]
-  let tempIndex = Math.floor(Math.random() * 4)
+//   let answers = [...wrongAnswers, correctAnswer].sort(() => Math.random() - 0.5)
+//   let tempIndex = Math.floor(Math.random() * 4)
 
-  if (tempIndex === 3) {
-    answers.push(correctAnswer)
-  } else {
-    answers.push(answers[tempIndex])
-    answers[tempIndex] = correctAnswer
-  }
+  
+//   if (tempIndex === 3) {
+//     answers.push(correctAnswer)
+//   } else {
+//     answers.push(answers[tempIndex])
+//     answers[tempIndex] = correctAnswer
+//   }
 
 
 
@@ -31,23 +33,14 @@ function Quiz() {
         <Image style={styles.blobFirst} source={require('../../assets/quiz-5.png')} />
         <Image style={styles.blobSecond} source={require('../../assets/quiz-6.png')} />
         <Text style={styles.questionAmount}>Correct answers: {correct} / {index + 1}</Text>
+        {}
         <Text style={styles.question}>{questions[index].question}</Text>
         {
             msg === null
             ? null
             : msg ? <Text style={styles.correctMsg}>{correctMsg}</Text> : <Text style={styles.wrongMsg}>{wrongMsg}</Text>
         }
-        <View style={styles.answers}>
-            {
-                questions && answers.map((answer, index) => {
-                    return(
-                        <TouchableOpacity disabled={msg || msg === false} onPress={() => {checkAnswer(correctAnswer === answer)}} activeOpacity={.7} style={styles.answer} key={index}>
-                            <Text style={styles.answerItem}>{answer}</Text>
-                        </TouchableOpacity>
-                    )
-                })
-            }
-        </View>
+        <Answers/>
         <TouchableOpacity onPress={nextQuestion} style={{width:'100%'}} activeOpacity={.7}><Text style={styles.skipQuestion}>Növbəti</Text></TouchableOpacity>
     </View>
   );

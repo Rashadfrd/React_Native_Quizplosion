@@ -6,6 +6,7 @@ const AppContext = createContext()
 export const Provider = ({children}) => {
 
     const [questions, setQuestions] = useState([])
+    const [answers, setAnswers] = useState([])
     const [loading, setLoading] = useState(false)
     const [modal, setModal] = useState(false)
     const [index, setIndex] = useState(0)
@@ -35,7 +36,6 @@ export const Provider = ({children}) => {
         }
         fetchQuestions()
     },[])
-
 
     const nextQuestion = () => {
         setMsg(null)
