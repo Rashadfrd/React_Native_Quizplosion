@@ -39,14 +39,11 @@ function AppInfo() {
       </View>
       <View style={styles.info}>
         <Text style={styles.infoText}>
-            Salam, mən, bu çox lazımlı appin yaradıcısı Rəşad Fərhadzadə, sizi salamlayıram. 22 yaşında camaat uşaq saxlıyanda mən hələ də özümü inkişaf elətdirib, iş həyatına atılmağa çalışıram. Nə hikmətdisə cv-mə cavab verən yoxdu
-        </Text>
-        <Text style={styles.infoText}>
-            Nəysə, irəli düyməsinə basdıqdan sonra siz istədiyiniz kateqoriyanı, sual sayını və çətinlik dərəcəsini seçib generate olunan quizdən yararlana bilərsiniz. İşdi əgər dediyim kimi seçimlərinizi edəcək bir pəncərə açılmadısa, deməli hələ onun kodunu yazmamışam :D
+            Irəli düyməsinə basdıqdan sonra siz istədiyiniz kateqoriyanı, sual sayını və çətinlik dərəcəsini seçib generate olunan quizdən yararlana bilərsiniz. İşdi əgər dediyim kimi seçimlərinizi edəcək bir pəncərə açılmadısa, deməli hələ onun kodunu yazmamışam :D
         </Text>
       </View>
 
-      <TouchableOpacity onPress={()=>{navigation.navigate('Quiz')}} activeOpacity={.4} style={styles.button}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Form')}} activeOpacity={.4} style={styles.button}>
         <Text style={styles.buttonText}>İrəli</Text>
       </TouchableOpacity>
     </View>
@@ -89,9 +86,9 @@ const styles = StyleSheet.create({
         gap:5,
         borderWidth:1,
         borderColor:'#a1a1a1',
-        marginHorizontal:10,
-        paddingVertical:15,
-        paddingHorizontal:15,
+        marginHorizontal:13,
+        paddingVertical:5,
+        paddingHorizontal:20,
         borderRadius:10,
         justifyContent:'center',
         alignItems:'center',
@@ -104,16 +101,23 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'#1c1a5e',
         borderRadius:10,
-        padding:5
+        padding:5,
+        position:'absolute',
+        bottom:25,
+        left:15
     },
     buttonText:{
         fontSize: 23,
         color:'#fff'
     },
+    info:{
+      marginTop:15
+    },
     infoText:{
         color:'#1c1a5e',
         paddingLeft:5,
-        textAlign:'justify'
+        textAlign:'justify',
+        fontSize:17
     }
 });
 
