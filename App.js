@@ -17,7 +17,7 @@ export default function App() {
     <Provider>
         <NavigationContainer>
         <StatusBar style='light' />
-          <Stack.Navigator initialRouteName='Form' screenOptions={{headerShown:false}}>
+          <Stack.Navigator initialRouteName='Loading' screenOptions={{headerShown:false}}>
             <Stack.Screen name="Landing" component={LandingScreen} />
             <Stack.Screen name="Loading" component={LoadingScreen} />
             <Stack.Screen name="AppInfo" component={AppInfoScreen} />

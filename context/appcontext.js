@@ -13,29 +13,27 @@ export const Provider = ({children}) => {
     const [correct, setCorrect] = useState(0)
     const [msg, setMsg] = useState(null)
 
-    useEffect(()=>{
+    const fetchQuestionsByForm = async (values)=>{
         let tempArr = []
-        const fetchQuestions = async () => {
-            setLoading(true)
-            const result = await fetch('https://quizplosion-default-rtdb.firebaseio.com/Questions.json')
-            const data = await result.json()
-            for(const key in data){
-                tempArr.push({
-                    id:key,
-                    category: data[key].category,
-                    correctAnswer: data[key].correct_answer,
-                    wrongAnswers: data[key].wrong_answers,
-                    difficulty: data[key].difficulty,
-                    question: data[key].question,
-                    wrongMsg: data[key].wrong_msg,
-                    correctMsg: data[key].correct_msg,
-                })
-            }
-            setQuestions(tempArr)
-            setLoading(false)
+        setLoading(true)
+        const result = await fetch('https://quizplosion-default-rtdb.firebaseio.com/Questions.json')
+        const data = await result.json()
+        for(const key in data){
+            tempArr.push({
+                id:key,
+                category: data[key].category,
+                correctAnswer: data[key].correct_answer,
+                wrongAnswers: data[key].wrong_answers,
+                difficulty: data[key].difficulty,
+                question: data[key].question,
+                wrongMsg: data[key].wrong_msg,
+                correctMsg: data[key].correct_msg,
+            })
         }
-        fetchQuestions()
-    },[])
+        // console.log(tempArr.filter(x=>x.category == values.category && x.difficulty == values.level).slice(0, +values.number))
+        setQuestions(tempArr.filter(x=>x.category == values.category && x.difficulty == values.level).slice(0, +values.number))
+        setLoading(false)
+    }
 
     const nextQuestion = () => {
         setMsg(null)
@@ -75,7 +73,8 @@ export const Provider = ({children}) => {
         checkAnswer,
         msg,
         modal,
-        setModal
+        setModal,
+        fetchQuestionsByForm
     }
     return(
         <AppContext.Provider value={data}>

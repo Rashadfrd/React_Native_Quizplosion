@@ -5,9 +5,10 @@ import Quizmodal from "../Modal";
 import Answers from "../Answers";
 
 function Quiz() {
+    
   const { questions, loading, index, nextQuestion, checkAnswer, correct, msg } = useAppContext();
 
-  const {correctAnswer, wrongAnswers, correctMsg, wrongMsg,} = questions[index]
+  const { correctMsg, wrongMsg,} = questions[index]
   
 //   let answers = [...wrongAnswers, correctAnswer].sort(() => Math.random() - 0.5)
 //   let tempIndex = Math.floor(Math.random() * 4)

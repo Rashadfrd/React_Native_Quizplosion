@@ -17,7 +17,7 @@ function Quizmodal() {
               <TouchableOpacity onPress={() => {setModal(false);setCorrect(0);setIndex(0),navigation.navigate('Landing')}} style={styles.button}>
                 <Text style={styles.buttonText}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={() => {setModal(false);setCorrect(0);setIndex(0),navigation.navigate('Form')}} style={styles.button}>
                 <Text style={styles.buttonText}>Try Again</Text>
               </TouchableOpacity>
             </View>
@@ -29,7 +29,7 @@ function Quizmodal() {
                   <TouchableOpacity onPress={() => {setModal(false);setCorrect(0);setIndex(0),navigation.navigate('Landing')}} style={styles.button}>
                     <Text style={styles.buttonText}>Cancel</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
+                  <TouchableOpacity onPress={() => {setModal(false);setCorrect(0);setIndex(0),navigation.navigate('Form')}} style={styles.button}>
                     <Text style={styles.buttonText}>Try Again</Text>
                   </TouchableOpacity>
                 </View>
