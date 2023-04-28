@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { shuffleArray } from "../utils/constants";
 
 const AppContext = createContext()
 
@@ -31,7 +32,7 @@ export const Provider = ({children}) => {
             })
         }
         // console.log(tempArr.filter(x=>x.category == values.category && x.difficulty == values.level).slice(0, +values.number))
-        setQuestions(tempArr.filter(x=>x.category == values.category && x.difficulty == values.level).slice(0, +values.number))
+        setQuestions(shuffleArray(tempArr.filter(x=>x.category == values.category && x.difficulty == values.level).sort(() => Math.random() - 0.5).slice(0, +values.number)))
         setLoading(false)
     }
 
