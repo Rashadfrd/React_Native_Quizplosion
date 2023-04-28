@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, Image,ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { MaterialIcons } from '@expo/vector-icons';
 import { useFormik } from "formik";
 import { quizSchema } from "../../schemas";
 import { useAppContext } from "../../context/appcontext";
 import { useNavigation } from "@react-navigation/native";
+import { SwipeButton } from 'react-native-expo-swipe-button';
 
 //Delay function
 function delay(ms) {
@@ -19,7 +21,7 @@ function Form() {
   const onSubmit = async (values, actions) => {
     fetchQuestionsByForm(values),
     await delay(2000)
-    navigation.navigate('Quiz')
+    navigation.replace('Quiz')
   }
 
   const {handleSubmit, values, errors, touched, isSubmitting, handleChange, handleBlur} = useFormik({
@@ -44,6 +46,13 @@ function Form() {
 
   return (
     <View style={styles.formSection}>
+      <Text style={styles.appTitle}>
+        <Image 
+          source={require("../../assets/quiz-3.png")}
+          style={{width:45,height:55}}  
+        />
+        uizPlosion
+      </Text>
       <Image source={require('../../assets/quiz-5.png')} style={{width:150, height:150, position:'absolute', top:-20, left:-20}}/>
       <Image source={require('../../assets/quiz-6.png')} style={{width:150, height:150, position:'absolute', bottom:20, right:-40}}/>
       {/* <Text style={styles.label}> Kateqoriyanı seçin</Text> */}
@@ -97,9 +106,27 @@ function Form() {
         </Picker>
       </View>
       {errors.level && touched.level && <Text style={styles.error}>{errors.level}</Text>}
-      <TouchableOpacity onPress={handleSubmit} activeOpacity={.7} style={styles.submitBtn}>
-        <Text style={styles.submitBtnText}>Başla</Text>
-      </TouchableOpacity>
+      <View style={styles.submitBtn}>
+        
+      <SwipeButton
+        Icon={
+          <MaterialIcons name="keyboard-arrow-right" size={50} color="black" />
+        }
+        onComplete={handleSubmit}
+        height={60}
+        circleSize={60}
+        circleBackgroundColor="#41e5ed"
+        title="Başla !"
+        borderRadius={180}
+        titleStyle={{color:'white', fontSize:19}}
+        containerStyle={{ backgroundColor: 'transparent'}}
+        underlayStyle={{backgroundColor:'#41e5ed'}}
+        underlayTitleStyle={{ color: 'black', fontSize:19 }}
+        underlayTitle="Başla !"
+        completeThresholdPercentage={95}
+        goBackToStart
+      />
+      </View>
     </View>
 
   );
@@ -112,7 +139,18 @@ const styles = StyleSheet.create({
     paddingVertical: 35,
     paddingHorizontal: 24,
     justifyContent: "center",
-    position:'relative'
+    position:'relative',
+    paddingTop:140
+  },
+  appTitle: {
+    fontSize: 55,
+    fontWeight: "500",
+    textAlign: "center",
+    color: "#fff",
+    marginTop:40,
+    position:'absolute',
+    top:130,
+    left:40
   },
   formItem: {
     marginVertical: 10,
@@ -136,9 +174,6 @@ const styles = StyleSheet.create({
     position:'absolute',
     left:25,
     bottom:35,
-    backgroundColor:"#41e5ed",
-    paddingVertical:15,
-    borderRadius:20
   },
   submitBtnText:{
     textAlign:'center',

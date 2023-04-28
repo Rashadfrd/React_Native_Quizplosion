@@ -6,7 +6,7 @@ import Answers from "../Answers";
 
 function Quiz() {
     
-  const { questions, loading, index, nextQuestion, checkAnswer, correct, msg } = useAppContext();
+  const { questions, loading, index, nextQuestion, correct, msg } = useAppContext();
 
   const { correctMsg, wrongMsg,} = questions[index]
   
