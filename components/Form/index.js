@@ -116,13 +116,13 @@ function Form() {
         height={60}
         circleSize={60}
         circleBackgroundColor="#41e5ed"
-        title="Başla !"
+        title="Sürüşdür !"
         borderRadius={180}
         titleStyle={{color:'white', fontSize:19}}
         containerStyle={{ backgroundColor: 'transparent'}}
         underlayStyle={{backgroundColor:'#41e5ed'}}
         underlayTitleStyle={{ color: 'black', fontSize:19 }}
-        underlayTitle="Başla !"
+        underlayTitle="Sürüşdür !"
         completeThresholdPercentage={95}
         goBackToStart
       />
