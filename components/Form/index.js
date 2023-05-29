@@ -67,7 +67,7 @@ function Form() {
         >
           <Picker.Item label="Sual kateqoriyasını seçin" value="" />
           <Picker.Item label="İdman" value="idman" />
-          <Picker.Item label="God" value="special" />
+          <Picker.Item label="God (asanı seç error verməsin :D)" value="special" />
         </Picker>
       </View>
       {errors.category && touched.category && <Text style={styles.error}>{errors.category}</Text>}
@@ -116,13 +116,13 @@ function Form() {
         height={60}
         circleSize={60}
         circleBackgroundColor="#41e5ed"
-        title="Sürüşdür !"
+        title="Sağa sürüşdür →"
         borderRadius={180}
         titleStyle={{color:'white', fontSize:19}}
         containerStyle={{ backgroundColor: 'transparent'}}
         underlayStyle={{backgroundColor:'#41e5ed'}}
         underlayTitleStyle={{ color: 'black', fontSize:19 }}
-        underlayTitle="Sürüşdür !"
+        underlayTitle="Başla !"
         completeThresholdPercentage={95}
         goBackToStart
       />
