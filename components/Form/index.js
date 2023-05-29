@@ -101,8 +101,8 @@ function Form() {
         >
           <Picker.Item label="Çətinlik dərəcəsini seçin" value="" />
           <Picker.Item label="Asan" value="easy" />
-          <Picker.Item label="Orta" value="medium" />
-          <Picker.Item label="Çətin" value="hard" />
+          <Picker.Item enabled={values.category == 'special' ? false : true} label="Orta" value="medium" />
+          <Picker.Item enabled={values.category == 'special' ? false : true} label="Çətin" value="hard" />
         </Picker>
       </View>
       {errors.level && touched.level && <Text style={styles.error}>{errors.level}</Text>}
