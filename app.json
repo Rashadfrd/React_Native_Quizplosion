@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "react-native-quizapp",
-    "slug": "react-native-quizapp",
+    "name": "QuizPlosion",
+    "slug": "QuizPlosion",
+    "description":"This is a quiz app.",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/quiz-3.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/quiz-12.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1c1a5e"
     },
     "assetBundlePatterns": [
       "**/*"
